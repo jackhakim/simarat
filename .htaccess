@@ -1,0 +1,22 @@
+Options +FollowSymLinks
+
+# Protect sensitive files.
+#<FilesMatch "\.(inc|po|sh|.*sql|log)$">
+#	Order allow,deny
+#</FilesMatch>
+
+# Disable directory listings.
+#Options -Indexes
+
+# Set the default index.
+#DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteBase /simarat/
+
+	# RewriteRule ^assets(.*)$ /assets/index.php/$1 [L]
+	
+	RewriteCond $1 !^(index\.php|favicon\.png|develop|assets)
+	RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>

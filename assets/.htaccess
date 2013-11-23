@@ -1,0 +1,19 @@
+<FilesMatch "\.(inc|po|sh|.*sql|log)$">
+	Order allow,deny
+</FilesMatch>
+
+# Disable directory listings.
+Options -Indexes
+
+# Set the default index.
+#DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond $1 !^(index\.php|favicon\.png)
+	RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
